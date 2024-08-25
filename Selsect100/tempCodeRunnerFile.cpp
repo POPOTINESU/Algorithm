@@ -21,8 +21,7 @@ int main()
         Target.push_back(x);
     }
 
-    // vectorのindexは0から始まる
-    for (int i = 0; i < Number.size(); i++)
+    for (int i = 1; i <= Number.size(); i++)
     {
         int count = 0;
         for (int j = 1; j <= Number[i]; j++)
@@ -36,7 +35,7 @@ int main()
             }
         }
         cout << count << endl;
-    } 
+    }
 
     return 0;
 }
