@@ -1,25 +1,26 @@
 #include <iostream>
 using namespace std;
 
-int N, L[100009], R[100009];
-int D, B[100009];
-int Answer[100009];
+int main()
+{
+    int A, B;
 
-int main() {
-	// 入力
-	cin >> D >> N;
-	for (int i = 1; i <= N; i++) cin >> L[i] >> R[i];
+    cin >> A >> B;
 
-	// 前日比に加算
-    for(int i = 1; i <= N; i++){
-        B[L[i]] += 1;
-        B[R[i] + 1] -=1;
+    bool isDivisor = false;
+    // 100の約数かどうかなので、線形探索で計算する
+    for (int i = A; i <= B; i++)
+    {
+        if (100 % i == 0)
+        {
+            isDivisor = true;
+            break;
+        }
     }
 
-    // 累積和
-    Answer[0] = 0;
-    for(int i = 1; i <= D; i++) Answer[i] = Answer[i -1] + B[i];
-    //　1日ごとの出席者を出力
-    for(int i =1; i<= D; i++) cout << Answer[i] << endl;
-	return 0;
+    if (isDivisor)
+        cout << "Yes" << endl;
+    else
+        cout << "No" << endl;
+    return 0;
 }
