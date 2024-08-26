@@ -1,41 +1,29 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-
 int main()
 {
-    // 1~nの重複無しの数を3つ選びその合計がxとなる組み合わせ
+    int N;
+    cin >> N;
 
-    // 入力値の量が分からないので、vectorを使用
-    vector<int> Number, Target;
-
-    while (true)
-    {
-        int n, x;
-        cin >> n >> x;
-
-        if (n == 0 && x == 0)
-            break;
-
-        Number.push_back(n);
-        Target.push_back(x);
-    }
-
-    for (int i = 1; i <= Number.size(); i++)
+    int Answer = 0;
+    // 奇数ループ
+    for (int i = 1; i <= N; i += 2)
     {
         int count = 0;
-        for (int j = 1; j <= Number[i]; j++)
+        for (int j = 1; j <= i; j++)
         {
-            for (int k = j + 1; k <= Number[i]; k++)
+            if (i % j == 0)
             {
-                // 差分を求めて条件に合致するか調べる
-                int diff = Target[i] - j - k;
-                if (k < diff && diff <= Number[i])
-                    count++;
+                count++;
             }
         }
-        cout << count << endl;
+        if (count == 8)
+        {
+            Answer++;
+        }
     }
+
+    cout << Answer << endl;
 
     return 0;
 }
